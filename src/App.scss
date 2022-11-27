@@ -23,8 +23,14 @@ body {
   box-shadow: 0 5px 30px rgba(0,0,0,2);
 }
 
-$colorGris: #757575;
-$colorPurpleHover: #9C27B0;
+.animationchk { 
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+$colorRosa: #757575;
+$colorRosaHover: #9C27B0;
 
 $colorAzul: #0097A7;
 $colorAzulHover: #03A9F4;
@@ -43,7 +49,7 @@ $colorAzulHover: #03A9F4;
   color: white;
 }
 
-@include button ('pink', $colorGris, $colorPurpleHover);
+@include button ('pink', $colorRosa, $colorRosaHover);
 @include button("blue", $colorAzul, $colorAzulHover);
 
 .file_input {
@@ -121,7 +127,7 @@ $colorTextChecked: #03A9F4;
   transition: stroke-dashoffset $duracion cubic-bezier(0.075, 0.82, 0.165, 1)
 }
 
-.tdo_circle {
+.todo_circle {
   stroke: $stroke;
   stroke-dasharray: 1 6;
   stroke-width: 0;
@@ -153,7 +159,7 @@ $colorTextChecked: #03A9F4;
 
 .todo_check {
   stroke: $stroke;
-  stroke-dasharray: 9.8 9.8;
+  stroke-dasharray: 9.8, 9.8;
   stroke-dashoffset: 9;
   transition-delay: $duracion * 0.4;
 }
@@ -163,7 +169,7 @@ $colorTextChecked: #03A9F4;
   stroke-dashoffset: 168;
 }
 
-.tdo_circle {
+.todo_circle {
   animation-delay: $duracion * 0.7;
   animation-duration: $duracion * 0.7;
 }
@@ -171,4 +177,7 @@ $colorTextChecked: #03A9F4;
 .todo_text:checked {
   ~ .todo_text {transition-delay: 0s; color: $colorTextChecked; opacity: 0.6;}
   ~ .todo_icon .todo_box {stroke-dashoffset: 56; transition-delay: 0s;}
+  ~ .todo_icon .todo_line {stroke-dashoffset: -8; }
+  ~ .todo_icon .todo_check {stroke-dashoffset: 0; transition-delay: $duracion * 0.6;}
+  ~ .todo_icon .todo_circle {animation-name: explode;}
 }
